@@ -9,12 +9,35 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <header id="heading"></header>
+      <main id="main">
+        <h3>Search TV-Show</h3>
+
+        <div id="myModal" class="modal">
+          <div id="modal-content" class="modal-content">
+            <span class="close">&times;</span>
+            <!-- <p>Some text in the Modal..</p> -->
+          </div>
+        </div>
+        <div id="search-container">
+          <input type="text" placeholder="Search TV-Show" id="search-field" />
+          <span class="btn" id="btn-get-episode">Get Episode</span>
+          <div id="episode-menu" class="hide-episode-menu"></div>
+        </div>
+        <h4 id="search-result"></h4>
+      </main>
+    </div>
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
+    <script src="./episodes.js"></script>
 
     <!-- Loads YOUR javascript code -->
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
+
+    <!-- Episode Menu Alignment Script -->
+    <script src="./menu-alignment.js"></script>
+    <!-- Fills Episode Menu With Episodes and handle window changing on click -->
+    <script src="./episode-menu.js"></script>
   </body>
 </html>
