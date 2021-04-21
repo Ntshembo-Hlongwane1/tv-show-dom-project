@@ -2,11 +2,17 @@
 const rootElem = document.getElementById('root');
 const episodesContainer = document.getElementById('episodes-container');
 const episodeMenu = document.getElementById('episode-menu');
+let DB = null;
+
+const storeEpisodeData = (data) => {
+  DB = data;
+};
 
 const fetchAllEpisodes = async () => {
   const url = 'https://api.tvmaze.com/shows/82/episodes';
   const res = await fetch(url, { method: 'GET' });
   const data = await res.json();
+  storeEpisodeData(data);
   return data;
 };
 
@@ -14,17 +20,18 @@ async function setup() {
   const allEpisodes = await fetchAllEpisodes();
   makePageForEpisodes(allEpisodes);
   linkClick();
+  fetchAllEpisodes();
   searchEvent();
   fillEpisodeMenu();
-  fetchAllEpisodes();
 }
 
 function makePageForEpisodes(episodeList) {
   // console.log(episodeList);
 
   const pageHeading = document.createElement('h1');
-  pageHeading.innerText = 'Game Of Thrones Episodes';
+  pageHeading.innerText = 'Amazing Tv Shows';
   pageHeading.classList.add('page-heading');
+  pageHeading.id = 'page-heading';
   const mainDiv = document.getElementById('main');
   const heading = document.getElementById('heading');
   heading.appendChild(pageHeading);
@@ -104,7 +111,7 @@ const searchEvent = () => {
 
 const searchFunction = (searchValue) => {
   // console.log(searchValue);
-  const allEpisodes = getAllEpisodes();
+  const allEpisodes = DB;
   const episodesInDom = document.querySelectorAll('.episode-card');
   // console.log(episodesInDom);
   episodesInDom.forEach((episode, idx) => {
@@ -192,7 +199,7 @@ const filterEpisodesDom = (searchResult) => {
 };
 
 const fillEpisodeMenu = () => {
-  const allEpisodes = getAllEpisodes();
+  const allEpisodes = DB;
   const popUpContainer = document.getElementById('modal-content');
 
   allEpisodes.forEach((episode, idx) => {
@@ -257,6 +264,12 @@ const removeFromDOm = (elements) => {
   elements.forEach((ele, idx) => {
     ele.remove();
   });
+};
+
+//this is only for demonstration of different fly-in directions
+
+var changeClass = function (name) {
+  $('#search, #nav ul').removeAttr('class').addClass(name);
 };
 
 window.onload = setup;

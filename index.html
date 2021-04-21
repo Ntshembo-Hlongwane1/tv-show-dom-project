@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TV Show Project | Ntshembo (Ntshembo-Hlongwane1)</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="style.css" rel="stylesheet" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
@@ -25,6 +26,10 @@
           <span class="btn" id="btn-get-episode">Get Episode</span>
           <div id="episode-menu" class="hide-episode-menu"></div>
         </div>
+        <div class="select-tvshow-container">
+          <span id="shows-hover" class="shows-hover">Find More Tv Shows</span>
+          <div id="shows-menu-container" class="hide-show-menu"></div>
+        </div>
         <h4 id="search-result"></h4>
       </main>
     </div>
@@ -39,5 +44,7 @@
     <script src="./menu-alignment.js"></script>
     <!-- Fills Episode Menu With Episodes and handle window changing on click -->
     <script src="./episode-menu.js"></script>
+    <!-- Shows menu script -->
+    <script src="./select-menu.js"></script>
   </body>
 </html>
